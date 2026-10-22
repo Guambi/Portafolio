@@ -1,6 +1,6 @@
 import { Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
-import { ProfileData } from '@/types/portfolio.types';
+import { ProfileData } from '@/types/portafolio.types';
 
 interface NavbarProps {
   profile: ProfileData;

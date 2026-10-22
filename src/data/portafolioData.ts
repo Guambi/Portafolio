@@ -1,11 +1,11 @@
 // ============================================================
-// portfolioData.ts  –  Single Source of Truth
+// portafolioData.ts  –  Single Source of Truth
 // Toda la información del portafolio de Kevin Guzmán.
 // ============================================================
 
-import type { PortfolioData } from '@/types/portfolio.types';
+import type { PortafolioData } from '@/types/portafolio.types';
 
-export const portfolioData: PortfolioData = {
+export const portafolioData: PortafolioData = {
   // ──────────────────────────────
   // PERFIL
   // ──────────────────────────────
@@ -275,3 +275,5 @@ export const portfolioData: PortfolioData = {
     },
   ],
 };
+
+export const portfolioData = portafolioData;

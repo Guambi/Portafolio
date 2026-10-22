@@ -1,5 +1,5 @@
 import { Briefcase, GraduationCap } from 'lucide-react';
-import type { ExperienceItem } from '@/types/portfolio.types';
+import type { ExperienceItem } from '@/types/portafolio.types';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
 interface TimelineSectionProps {

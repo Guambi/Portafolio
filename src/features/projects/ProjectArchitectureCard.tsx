@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Lock, ExternalLink } from 'lucide-react';
-import type { ProjectCaseStudy } from '@/types/portfolio.types';
+import type { ProjectCaseStudy } from '@/types/portafolio.types';
 import { Badge } from '@/components/ui/Badge';
 
 interface ProjectArchitectureCardProps {

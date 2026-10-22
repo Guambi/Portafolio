@@ -1,4 +1,4 @@
-import type { ProjectCaseStudy } from '@/types/portfolio.types';
+import type { ProjectCaseStudy } from '@/types/portafolio.types';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { ProjectArchitectureCard } from './ProjectArchitectureCard';
 import { useState } from 'react';

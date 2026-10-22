@@ -4,16 +4,16 @@ import { HeroSection } from '@/features/hero/HeroSection';
 import { ProjectsSection } from '@/features/projects/ProjectsSection';
 import { SkillsMatrix } from '@/features/skills/SkillsMatrix';
 import { TimelineSection } from '@/features/experience/TimelineSection';
-import { portfolioData } from '@/data/portfolioData';
+import { portafolioData } from '@/data/portafolioData';
 
 /**
  * App — Componente raíz del portafolio.
  * Ensambla todas las secciones en el orden correcto.
- * El estado global se pasa hacia abajo desde portfolioData (prop drilling
+ * El estado global se pasa hacia abajo desde portafolioData (prop drilling
  * mínimo dado que es una SPA de lectura sin interacciones complejas).
  */
 function App() {
-  const { profile, projects, skillCategories, experience } = portfolioData;
+  const { profile, projects, skillCategories, experience } = portafolioData;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased">

@@ -1,6 +1,6 @@
 import { ArrowDown, Mail, MapPin, Copy, Check, Download } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
-import type { ProfileData } from '@/types/portfolio.types';
+import type { ProfileData } from '@/types/portafolio.types';
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
 
 interface HeroSectionProps {

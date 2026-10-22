@@ -1,5 +1,5 @@
 // ============================================================
-// portfolio.types.ts
+// portafolio.types.ts
 // Single source of truth para todas las interfaces del portafolio.
 // ============================================================
 
@@ -90,9 +90,12 @@ export interface ExperienceItem {
 // ----------------------------
 // 5. Tipo raíz del portafolio
 // ----------------------------
-export interface PortfolioData {
+export interface PortafolioData {
   profile: ProfileData;
   projects: ProjectCaseStudy[];
   skillCategories: SkillCategory[];
   experience: ExperienceItem[];
 }
+
+export type PortfolioData = PortafolioData;
+

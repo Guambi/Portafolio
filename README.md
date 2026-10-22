@@ -1,4 +1,4 @@
-# Kevin Guzmán — Software Engineer & UX Portfolio
+# Kevin Guzmán — Software Engineer & UX Portafolio
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black&style=flat-square)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white&style=flat-square)](https://www.typescriptlang.org/)
@@ -13,7 +13,7 @@ Portafolio web profesional de **Kevin Guzmán**, Ingeniero de Software Full Stac
 ## ✨ Características Principales
 
 * **Casos de Estudio con Desglose de Arquitectura:** Vista técnica en pestañas (*Reto*, *Solución* y *Arquitectura por Capas*) para proyectos empresariales multiplataforma.
-* **Single Source of Truth:** Todo el contenido, métricas y trayectoria se gestionan de forma desacoplada y tipada en [`src/data/portfolioData.ts`](src/data/portfolioData.ts).
+* **Single Source of Truth:** Todo el contenido, métricas y trayectoria se gestionan de forma desacoplada y tipada en [`src/data/portafolioData.ts`](src/data/portafolioData.ts).
 * **Arquitectura Modular (Feature-Driven):** Componentes desacoplados en carpetas funcionales (`hero`, `projects`, `skills`, `experience`, `layout`, `ui`).
 * **Diseño Dark Moderno & Responsivo:** Construido con Tailwind CSS y tipografía optimizada (Inter y JetBrains Mono).
 * **Accesibilidad & SEO:** Semántica HTML5 adecuada, metadatos Open Graph, navegación por teclado y soporte de descarga de CV optimizado.
@@ -34,7 +34,7 @@ Portafolio web profesional de **Kevin Guzmán**, Ingeniero de Software Full Stac
 ## 📂 Estructura del Proyecto
 
 ```text
-portfolio/
+portafolio/
 ├── public/
 │   └── cv-kevin-guzman.pdf       # Currículum descargable optimizado
 ├── src/
@@ -43,7 +43,7 @@ portfolio/
 │   │   ├── layout/               # Componentes estructurales (Navbar, Footer)
 │   │   └── ui/                   # Componentes atómicos reutilizables (Badge, Icons, etc.)
 │   ├── data/
-│   │   └── portfolioData.ts      # Datos y contenidos del portafolio (SSOT)
+│   │   └── portafolioData.ts     # Datos y contenidos del portafolio (SSOT)
 │   ├── features/                 # Módulos por sección
 │   │   ├── hero/                 # Sección principal / Presentación
 │   │   ├── projects/             # Casos de estudio y tarjetas de arquitectura

@@ -3,7 +3,7 @@ import { Menu, X, Download, Send, Copy, Check, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons';
 import { Popover, Button } from "@material-tailwind/react";
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
-import type { ProfileData } from '@/types/portfolio.types';
+import type { ProfileData } from '@/types/portafolio.types';
 
 interface NavbarProps {
   profile: ProfileData;

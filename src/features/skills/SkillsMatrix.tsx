@@ -1,4 +1,4 @@
-import type { SkillCategory } from '@/types/portfolio.types';
+import type { SkillCategory } from '@/types/portafolio.types';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 
 interface SkillsMatrixProps {
