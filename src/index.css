@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* ============================================================
+   index.css — Design System base del portafolio
+   Kevin Guzmán — Blue Tech Dark
+   ============================================================ */
+
+/* ── Variables CSS ── */
+:root {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Colores de marca */
+  --color-bg: #0B1120;
+  --color-card: #111827;
+  --color-primary: #2563EB;
+  --color-primary-light: #3B82F6;
+  --color-secondary: #06B6D4;
+  --color-border: #1E293B;
+  --color-text: #F1F5F9;
+  --color-muted: #94A3B8;
+}
+
+/* ── Reset & base ── */
+/* Layer important in Tailwind v4 */
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── Scrollbar personalizado (Chromium) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* ── Selección de texto ── */
+::selection {
+  background-color: rgba(37, 99, 235, 0.3);
+  color: #F1F5F9;
+}
+
+/* ── Focus visible accesible ── */
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Tipografía: código ── */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+}
