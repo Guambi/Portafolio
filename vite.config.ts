@@ -4,7 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Portafolio/',
+  base: '/Portafolio/', //root base into github pages
   plugins: [react()],
   resolve: {
     alias: {
