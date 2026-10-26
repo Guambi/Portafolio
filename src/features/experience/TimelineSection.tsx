@@ -13,8 +13,8 @@ interface TimelineSectionProps {
  */
 export function TimelineSection({ experience }: TimelineSectionProps) {
   // Separar trabajo de educación para dos columnas
-  const workItems = experience.filter((e) => e.type === 'work');
-  const educationItems = experience.filter((e) => e.type === 'education');
+  const workItems = experience.filter((e) => e.type === 'work').sort((a, b) => b.period.localeCompare(a.period));
+  const educationItems = experience.filter((e) => e.type === 'education').sort((a, b) => b.period.localeCompare(a.period));
 
   return (
     <section
@@ -94,11 +94,10 @@ function TimelineList({ items, accentColor = 'blue' }: TimelineListProps) {
 
             {/* GPA (educación) */}
             {item.gpa && (
-              <span className={`inline-block text-xs font-mono mt-1.5 px-2 py-0.5 rounded ${
-                accentColor === 'cyan'
-                  ? 'bg-cyan-500/10 text-cyan-400'
-                  : 'bg-blue-500/10 text-blue-400'
-              }`}>
+              <span className={`inline-block text-xs font-mono mt-1.5 px-2 py-0.5 rounded ${accentColor === 'cyan'
+                ? 'bg-cyan-500/10 text-cyan-400'
+                : 'bg-blue-500/10 text-blue-400'
+                }`}>
                 {item.gpa}
               </span>
             )}

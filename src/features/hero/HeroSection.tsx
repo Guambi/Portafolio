@@ -23,7 +23,7 @@ export function HeroSection({ profile, projectsCount = 5 }: HeroSectionProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden"
       aria-label={`Presentación de ${profile.name}`}
     >
       {/* Fondo decorativo: glow azul centrado */}
@@ -46,6 +46,28 @@ export function HeroSection({ profile, projectsCount = 5 }: HeroSectionProps) {
             {profile.countries.join(' · ')}
           </span>
         </div>
+
+        {/* Avatar / Foto de perfil */}
+        {profile.avatarUrl && (
+          <div className="relative group">
+            {/* Glow effect behind avatar */}
+            <div
+              className="absolute -inset-2 rounded-full bg-gradient-to-br from-blue-500/30 via-cyan-400/20 to-purple-500/30 blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+              aria-hidden="true"
+            />
+            {/* Gradient ring */}
+            <div className="relative p-[3px] rounded-full bg-gradient-to-br from-blue-500 via-cyan-400 to-purple-500">
+              <img
+                src={profile.avatarUrl}
+                alt={`Foto de ${profile.name}`}
+                width={128}
+                height={128}
+                className="w-32 h-32 rounded-full object-cover bg-slate-900 ring-2 ring-slate-900"
+                loading="eager"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Nombre principal */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-100 leading-tight tracking-tight">
@@ -135,7 +157,7 @@ export function HeroSection({ profile, projectsCount = 5 }: HeroSectionProps) {
         </div>
 
         {/* Links sociales */}
-        <div className="flex items-center gap-3 mt-2">
+        <div className="flex items-center gap-3 mt-8">
           <a
             id="hero-github-link"
             href={profile.github}
@@ -170,7 +192,7 @@ export function HeroSection({ profile, projectsCount = 5 }: HeroSectionProps) {
       {/* Scroll indicator */}
       <button
         onClick={handleScrollToProjects}
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2
           text-slate-600 hover:text-slate-400 transition-colors animate-bounce"
         aria-label="Desplazar hacia proyectos"
       >

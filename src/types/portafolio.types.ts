@@ -19,6 +19,7 @@ export interface ProfileData {
   cvFilename: string;
   yearsOfExperience: number;
   countries: string[];
+  avatarUrl?: string;
 }
 
 // ----------------------------

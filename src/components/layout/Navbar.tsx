@@ -37,6 +37,36 @@ export function Navbar({ profile }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll spy — highlight nav item based on visible section
+  useEffect(() => {
+    const sectionIds = ['#hero', '#projects', '#skills', '#experience'];
+    const sections = sectionIds
+      .map((id) => document.querySelector(id))
+      .filter(Boolean) as Element[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const href = `#${entry.target.id}`;
+            setNavItems((prev) =>
+              prev.map((item) => ({
+                ...item,
+                selected: item.href === href,
+              }))
+            );
+          }
+        }
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
     const target = document.querySelector(href);
@@ -63,7 +93,7 @@ export function Navbar({ profile }: NavbarProps) {
       `}
     >
       <nav
-        className="mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between"
+        className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between"
         aria-label="Navegación principal"
       >
         {/* Logo / Nombre */}
@@ -93,7 +123,7 @@ export function Navbar({ profile }: NavbarProps) {
 
         {/* Boton de contacto estilo CTA */}
         <Popover open={isContactPopoverOpen} onOpenChange={setIsContactPopoverOpen}>
-          <Popover.Trigger className='!px-4 !py-2 !rounded-md !text-sm !font-medium
+          <Popover.Trigger className='hidden md:flex !px-4 !py-2 !rounded-md !text-sm !font-medium
             !bg-blue-600/20 !text-white !border !border-blue-500/30
             hover:bg-blue-600 hover:border-blue-600
             transition-all duration-200' as={Button} variant="outline" onClick={() => setIsContactPopoverOpen((cur) => !cur)}>
@@ -203,22 +233,92 @@ export function Navbar({ profile }: NavbarProps) {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
-                    className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 hover:text-slate-100 hover:bg-slate-800/80 transition-all"
+                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href); handleSelectNavItem(item.href); }}
+                    className={`block px-4 py-3 rounded-lg text-sm font-medium text-slate-300 ${item.selected ? 'text-xl text-white' : ''} hover:text-slate-100 hover:bg-slate-800/80 transition-all`}
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-2 border-t border-slate-800 mt-1">
+              <li className="pt-2 border-t border-slate-800 mt-1 grid grid-cols-2 gap-2">
+                <a
+                  id="hero-github-link"
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`GitHub de ${profile.name}`}
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
+              text-slate-300 border border-slate-700
+              hover:border-slate-600 hover:text-slate-100 hover:bg-slate-800/60
+              transition-all duration-200 active:scale-95"
+                >
+                  <GithubIcon size={18} />
+                  GitHub
+                </a>
+                <a
+                  id="hero-linkedin-link"
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`LinkedIn de ${profile.name}`}
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
+              text-slate-300 border border-slate-700
+              hover:border-slate-600 hover:text-slate-100 hover:bg-slate-800/60
+              transition-all duration-200 active:scale-95"
+                >
+                  <LinkedinIcon size={18} />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
                 <a
                   href={profile.cvFilename}
                   download
-                  className="flex items-center gap-2 px-4 py-3 rounded-lg text-sm font-medium text-blue-400 hover:text-blue-300"
+                  id="nav-download-cv"
+                  className="col-span-full flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
+              text-slate-300 border border-slate-700
+              hover:border-slate-600 hover:text-slate-100 hover:bg-slate-800/60
+              transition-all duration-200 active:scale-95"
                 >
                   <Download size={14} />
                   Descargar CV
                 </a>
+              </li>
+              <li className='grid grid-cols-2 gap-2'>
+                <a
+                  id="hero-email-link"
+                  href={`mailto:${profile.email}`}
+                  aria-label={`Enviar email a ${profile.name}`}
+                  className="col-span-full flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
+              text-slate-300 border border-slate-700
+              hover:border-slate-600 hover:text-slate-100 hover:bg-slate-800/60
+              transition-all duration-200 active:scale-95"
+                >
+                  <Mail size={18} />
+                  Enviar Email
+                </a>
+                <label className="col-span-full text-center">---- o ----</label>
+                <button
+                  id="hero-cta-copy-email"
+                  onClick={() => copy(profile.email)}
+                  className="col-span-full flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
+              text-slate-300 border border-slate-700
+              hover:border-slate-600 hover:text-slate-100 hover:bg-slate-800/60
+              transition-all duration-200 active:scale-95"
+                  aria-live="polite"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={14} className="text-cyan-400" />
+                      <span className="text-cyan-400">¡Copiado!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} />
+                      {profile.email}
+                    </>
+                  )}
+                </button>
               </li>
             </ul>
           </div>

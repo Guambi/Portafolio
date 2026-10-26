@@ -21,6 +21,7 @@ export const portafolioData: PortafolioData = {
     cvFilename: 'cv-kevin-guzman.pdf',
     yearsOfExperience: 5,
     countries: ['Ecuador', 'Panamá', 'República Dominicana'],
+    avatarUrl: 'https://github.com/Guambi.png',
   },
 
   // ──────────────────────────────
